@@ -4,19 +4,19 @@ import { v4 as uuidv4 } from 'uuid';
 
 const PoForm = (props) => {
   const [book, setBook] = useState({
-    bookname: props.book ? props.book.bookname : '',
-    author: props.book ? props.book.author : '',
-    quantity: props.book ? props.book.quantity : '',
-    price: props.book ? props.book.price : '',
-    date: props.book ? props.book.date : ''
+    ponumber: props.book ? props.book.ponumber : '',
+    podate: props.book ? props.book.podate : '',
+    deliverydate: props.book ? props.book.deliverydate : '',
+    deliverydestination: props.book ? props.book.deliverydestination : '',
+    appointmenttime: props.book ? props.book.appointmenttime : ''
   });
 
   const [errorMsg, setErrorMsg] = useState('');
-  const { bookname, author, price, quantity } = book;
+  const { ponumber, deliverydate, deliverydestination, appointmenttime } = book;
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    const values = [bookname, author, price, quantity];
+    const values = [ponumber, deliverydate, deliverydestination, appointmenttime];
     let errorMsg = '';
 
     const allFieldsFilled = values.every((field) => {
@@ -27,11 +27,11 @@ const PoForm = (props) => {
     if (allFieldsFilled) {
       const book = {
         id: uuidv4(),
-        bookname,
-        author,
-        price,
-        quantity,
-        date: new Date()
+        ponumber,
+        podate : new Date(),
+        deliverydate,
+        deliverydestination,
+        appointmenttime
       };
       props.handleOnSubmit(book);
     } else {
@@ -43,16 +43,8 @@ const PoForm = (props) => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     switch (name) {
-      case 'quantity':
+      case 'ponumber':
         if (value === '' || parseInt(value) === +value) {
-          setBook((prevState) => ({
-            ...prevState,
-            [name]: value
-          }));
-        }
-        break;
-      case 'price':
-        if (value === '' || value.match(/^\d{1,}(\.\d{0,2})?$/)) {
           setBook((prevState) => ({
             ...prevState,
             [name]: value
@@ -72,46 +64,46 @@ const PoForm = (props) => {
       {errorMsg && <p className="errorMsg">{errorMsg}</p>}
       <Form onSubmit={handleOnSubmit}>
         <Form.Group controlId="name">
-          <Form.Label>Book Name</Form.Label>
+          <Form.Label>Purchase Order #</Form.Label>
           <Form.Control
             className="input-control"
             type="text"
-            name="bookname"
-            value={bookname}
-            placeholder="Enter name of book"
+            name="ponumber"
+            value={ponumber}
+            placeholder="Enter purchase order ID"
             onChange={handleInputChange}
           />
         </Form.Group>
         <Form.Group controlId="author">
-          <Form.Label>Book Author</Form.Label>
+          <Form.Label>Delivery Date</Form.Label>
           <Form.Control
             className="input-control"
             type="text"
-            name="author"
-            value={author}
-            placeholder="Enter name of author"
+            name="deliverydate"
+            value={deliverydate}
+            placeholder="Enter delivery date"
             onChange={handleInputChange}
           />
         </Form.Group>
-        <Form.Group controlId="quantity">
-          <Form.Label>Quantity</Form.Label>
+        <Form.Group controlId="deliverydestination">
+          <Form.Label>Destination</Form.Label>
           <Form.Control
             className="input-control"
-            type="number"
-            name="quantity"
-            value={quantity}
-            placeholder="Enter available quantity"
+            type="text"
+            name="deliverydestination"
+            value={deliverydestination}
+            placeholder="Enter destination"
             onChange={handleInputChange}
           />
         </Form.Group>
         <Form.Group controlId="price">
-          <Form.Label>Book Price</Form.Label>
+          <Form.Label>Appointment Time</Form.Label>
           <Form.Control
             className="input-control"
             type="text"
-            name="price"
-            value={price}
-            placeholder="Enter price of book"
+            name="appointmenttime"
+            value={appointmenttime}
+            placeholder="Enter appointment time"
             onChange={handleInputChange}
           />
         </Form.Group>

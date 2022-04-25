@@ -12,8 +12,19 @@ const PoList = ({ books, setBooks }) => {
     <React.Fragment>
       <div className="book-list">
         <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">PO #</th>
+              <th scope="col">PO Date</th>
+              <th scope="col">Delivery Date</th>
+              <th scope="col">Appointment Time</th>
+              <th scope="col">Destination</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
         {!_.isEmpty(books) ? (
           books.map((book) => (
+            
             <Po key={book.id} {...book} handleRemoveBook={handleRemoveBook} />
           ))
         ) : (
