@@ -78,7 +78,7 @@ const PoForm = (props) => {
           <Form.Label>Delivery Date</Form.Label>
           <Form.Control
             className="input-control"
-            type="text"
+            type="date"
             name="deliverydate"
             value={deliverydate}
             placeholder="Enter delivery date"
@@ -100,7 +100,7 @@ const PoForm = (props) => {
           <Form.Label>Appointment Time</Form.Label>
           <Form.Control
             className="input-control"
-            type="text"
+            type="time"
             name="appointmenttime"
             value={appointmenttime}
             placeholder="Enter appointment time"
