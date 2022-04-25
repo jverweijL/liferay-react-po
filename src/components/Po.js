@@ -18,8 +18,8 @@ const Po = ({
       <td>{ponumber}</td>
       <td>{podate.toLocaleDateString()}</td>
       <td>{deliverydate}</td>
-      <td>{deliverydestination}</td>
       <td>{appointmenttime}</td>
+      <td>{deliverydestination}</td>
       <td>
         <Button variant="primary" onClick={() => history.push(`/edit/${id}`)}>
           Edit
