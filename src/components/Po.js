@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
-const Book = ({
+const Po = ({
   id,
   bookname,
   author,
@@ -34,4 +34,4 @@ const Book = ({
   );
 };
 
-export default Book;
+export default Po;

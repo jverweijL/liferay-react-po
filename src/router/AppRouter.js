@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from '../components/Header';
-import AddBook from '../components/AddBook';
-import EditBook from '../components/EditBook';
-import BooksList from '../components/BooksList';
+import AddPo from '../components/AddPo';
+import EditPo from '../components/EditPo';
+import PoList from '../components/PoList';
 import useLocalStorage from '../hooks/useLocalStorage';
 
 const AppRouter = () => {
@@ -17,20 +17,20 @@ const AppRouter = () => {
           <Switch>
             <Route
               render={(props) => (
-                <BooksList {...props} books={books} setBooks={setBooks} />
+                <PoList {...props} books={books} setBooks={setBooks} />
               )}
               path="/"
               exact={true}
             />
             <Route
               render={(props) => (
-                <AddBook {...props} books={books} setBooks={setBooks} />
+                <AddPo {...props} books={books} setBooks={setBooks} />
               )}
               path="/add"
             />
             <Route
               render={(props) => (
-                <EditBook {...props} books={books} setBooks={setBooks} />
+                <EditPo {...props} books={books} setBooks={setBooks} />
               )}
               path="/edit/:id"
             />

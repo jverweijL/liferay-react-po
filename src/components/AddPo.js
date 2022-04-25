@@ -1,7 +1,7 @@
 import React from 'react';
-import BookForm from './BookForm';
+import PoForm from './PoForm';
 
-const AddBook = ({ history, books, setBooks }) => {
+const AddPo = ({ history, books, setBooks }) => {
   const handleOnSubmit = (book) => {
     setBooks([book, ...books]);
     history.push('/');
@@ -9,9 +9,9 @@ const AddBook = ({ history, books, setBooks }) => {
 
   return (
     <React.Fragment>
-      <BookForm handleOnSubmit={handleOnSubmit} />
+      <PoForm handleOnSubmit={handleOnSubmit} />
     </React.Fragment>
   );
 };
 
-export default AddBook;
+export default AddPo;

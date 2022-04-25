@@ -4,6 +4,9 @@ This example is based upon https://www.freecodecamp.org/news/react-crud-app-how-
   
 Keep in mind we use localStorage (browser-based storage)  
 
+To run first `yarn` then `yarn start`  
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

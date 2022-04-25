@@ -1,8 +1,8 @@
 import React from 'react';
-import BookForm from './BookForm';
+import PoForm from './PoForm';
 import { useParams } from 'react-router-dom';
 
-const EditBook = ({ history, books, setBooks }) => {
+const EditPo = ({ history, books, setBooks }) => {
   const { id } = useParams();
   const bookToEdit = books.find((book) => book.id === id);
 
@@ -14,9 +14,9 @@ const EditBook = ({ history, books, setBooks }) => {
 
   return (
     <div>
-      <BookForm book={bookToEdit} handleOnSubmit={handleOnSubmit} />
+      <PoForm book={bookToEdit} handleOnSubmit={handleOnSubmit} />
     </div>
   );
 };
 
-export default EditBook;
+export default EditPo;
