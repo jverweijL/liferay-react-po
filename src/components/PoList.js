@@ -17,7 +17,7 @@ const PoList = ({ books, setBooks }) => {
             <Po key={book.id} {...book} handleRemoveBook={handleRemoveBook} />
           ))
         ) : (
-          <p className="message">No books available. Please add some books.</p>
+          <p className="message">No purchase orders available.</p>
         )}
         </table>
       </div>
