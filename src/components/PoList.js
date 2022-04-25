@@ -11,6 +11,7 @@ const PoList = ({ books, setBooks }) => {
   return (
     <React.Fragment>
       <div className="book-list">
+        <table class="table">
         {!_.isEmpty(books) ? (
           books.map((book) => (
             <Po key={book.id} {...book} handleRemoveBook={handleRemoveBook} />
@@ -18,6 +19,7 @@ const PoList = ({ books, setBooks }) => {
         ) : (
           <p className="message">No books available. Please add some books.</p>
         )}
+        </table>
       </div>
     </React.Fragment>
   );
