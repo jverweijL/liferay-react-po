@@ -4,22 +4,22 @@ import { useHistory } from 'react-router-dom';
 
 const Po = ({
   id,
-  pONumber,
-  dateCreated,
-  deliveryDate,
+  purchaseOrderNumber,
+  orderDate,
+  requestedDeliveryDate,
   deliveryTime,
-  deliveryDestination,
+  shippingAddressId,
   handleRemoveBook
 }) => {
   const history = useHistory();
 
   return (
     <tr>
-      <td>{pONumber}</td>
-      <td>{dateCreated}</td>
-      <td>{deliveryDate}</td>
+      <td>{purchaseOrderNumber}</td>
+      <td>{orderDate}</td>
+      <td>{requestedDeliveryDate}</td>
       <td>{deliveryTime}</td>
-      <td>{deliveryDestination.name}</td>
+      <td>{shippingAddressId}</td>
       <td>
         <Button variant="primary" onClick={() => history.push(`/edit/${id}`)}>
           Edit

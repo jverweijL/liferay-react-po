@@ -7,8 +7,11 @@ import PoList from '../components/PoList';
 
 const remoteAppClient = new window.__LIFERAY_REMOTE_APP_SDK__.Client({debug: true});
 
-
 const AppRouter = () => {
+
+  const [books, setBooks] = useState();
+  const [roles, setUserRoles] = useState();
+  const [siteGroupId, setSiteGroupId] = useState();
 
   const getSiteGroupId = () => {
 		remoteAppClient.get('siteGroupId')
@@ -17,33 +20,41 @@ const AppRouter = () => {
 		});
 	};
 
+  const getBooks = useCallback(() => {
+		remoteAppClient.fetch(
+			`/o/headless-commerce-admin-order/v1.0/orders`)
+		.then((response) => response.json())
+		.then(({items}) => setBooks(items));
+	}, []);
+
+  const getUserRoles = useCallback(() => {
+    remoteAppClient.fetch(
+			`/o/headless-admin-user/v1.0/my-user-account`)
+		.then((response) => response.json())
+		.then(({roleBriefs}) => setUserRoles(roleBriefs));
+
+  },[]);
+
   useEffect(() => {
 		getSiteGroupId();
 	}, []);
-
-  /*const [books, setBooks] = useLocalStorage('books', []);*/
-  const [books, setBooks] = useState();
-  const [siteGroupId, setSiteGroupId] = useState();
-
-  const getBooks = useCallback(() => {
-		remoteAppClient.fetch(
-			`/o/c/purchaseorders/scopes/${siteGroupId}`)
-		.then((response) => response.json())
-		.then(({items}) => setBooks(items));
-	}, [siteGroupId]);
 
   useEffect(() => {
 		if (siteGroupId) {
 			getBooks();
 		}
-	}, [getBooks, siteGroupId])
+	}, [getBooks, siteGroupId]);
 
+  useEffect(() => {
+		if (siteGroupId) {
+      getUserRoles();
+		}
+	}, [getUserRoles, siteGroupId]);
 
-//http://localhost:8080/o/c/purchaseorders/scopes/39507
   return (
     <BrowserRouter>
       <div>
-        <Header />{siteGroupId}
+        <Header />
         <div className="main-content">
           <Switch>
             <Route
