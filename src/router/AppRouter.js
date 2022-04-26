@@ -54,6 +54,7 @@ const AppRouter = () => {
   return (
     <BrowserRouter>
       <div>
+        <span style={{display:'none'}}>{roles}</span>
         <Header />
         <div className="main-content">
           <Switch>
