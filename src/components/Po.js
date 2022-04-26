@@ -4,22 +4,22 @@ import { useHistory } from 'react-router-dom';
 
 const Po = ({
   id,
-  ponumber,
-  podate,
-  deliverydate,
-  deliverydestination,
-  appointmenttime,
+  pONumber,
+  dateCreated,
+  deliveryDate,
+  deliveryTime,
+  deliveryDestination,
   handleRemoveBook
 }) => {
   const history = useHistory();
 
   return (
     <tr>
-      <td>{ponumber}</td>
-      <td>{podate.toLocaleDateString()}</td>
-      <td>{deliverydate}</td>
-      <td>{appointmenttime}</td>
-      <td>{deliverydestination}</td>
+      <td>{pONumber}</td>
+      <td>{dateCreated}</td>
+      <td>{deliveryDate}</td>
+      <td>{deliveryTime}</td>
+      <td>{deliveryDestination.name}</td>
       <td>
         <Button variant="primary" onClick={() => history.push(`/edit/${id}`)}>
           Edit
